@@ -1,0 +1,32 @@
+<div class="hero">
+    <h1 class="hero-heading">Design and build accessible</h1>
+    <p class="hero-subheading">
+        I’m Smit, an <a href="/">accessibility consultant</a> helping companies produce
+        digital products that everyone can use, from strategic guidance to practical
+        support. Here’s a bit more about me and what I’m up to now.
+    </p>
+</div>
+
+<style>
+    .hero {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) * 3);
+    }
+    .hero-heading {
+        font-size: 1.953em;
+        text-wrap: pretty;
+        color: var(--text-primary);
+        max-width: 32em;
+    }
+    .hero-subheading {
+        color: var(--text-secondary);
+        max-width: 32em;
+    }
+
+    @media (min-width: 43em) {
+        .hero-heading {
+            font-size: 4.17em;
+        }
+    }
+</style>

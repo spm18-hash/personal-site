@@ -1,0 +1,52 @@
+---
+import BrandLogo from "../assets/logo.svg";
+
+const navItems = [
+    { label: "Blog", href: "/blog" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Portfolio", href: "/portfolio" },
+];
+---
+
+<header class="header">
+    <a href="/" aria-label="Home"><BrandLogo class="brand-logo" /></a>
+    <nav>
+        <ul role="navigation" class="link-container">
+            {
+                navItems.map((item) => (
+                    <li class="link-item">
+                        <a href={item.href}>{item.label}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</header>
+
+<style>
+    .header {
+        display: flex;
+        flex-direction: column;
+        padding-block: calc(var(--spacing) * 2);
+        gap: calc(var(--spacing) * 2);
+    }
+    .brand-logo {
+        height: calc(var(--spacing) * 10);
+        width: auto;
+        margin-left: -4px;
+    }
+    .link-container {
+        display: flex;
+        gap: calc(var(--spacing) * 3);
+        align-items: center;
+    }
+
+    @media (min-width: 43em) {
+        .header {
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+    }
+</style>
