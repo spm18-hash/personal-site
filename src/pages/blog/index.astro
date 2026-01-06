@@ -113,7 +113,7 @@ const blog: blogProps[] = [
                                         post.categories.length - 1
                                     ] && <Fragment set:html={"and&nbsp;"} />}
                                 <a
-                                    href={`/category/${category}`}
+                                    href={`/category/${category.toLowerCase()}/`}
                                     set:text={category}
                                     aria-label={`Blog in ${category}`}
                                 />
