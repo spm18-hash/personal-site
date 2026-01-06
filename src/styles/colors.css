@@ -7,7 +7,8 @@
 
     --bg-primary: white;
 
-    --bg-secondary: #181d27;
+    /*--bg-secondary: #181d27;*/
+    --bg-secondary: hsl(353 40% 96% / 0.5);
     --bg-secondary-solid: #535862;
 
     --spacing: 0.25rem;
@@ -19,7 +20,7 @@
         --text-secondary: #cecfd2;
 
         --text-brand-primary: hsl(353 100% 70%);
-        --text-brand-primary-hover: hsl(353 90% 74%);
+        --text-brand-primary-hover: hsl(0 95% 75%);
 
         --bg-primary: #0c0e12;
 

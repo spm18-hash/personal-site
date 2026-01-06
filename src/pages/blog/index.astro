@@ -1,0 +1,208 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const years = [2023, 2022, 2021, 2020];
+
+type blogProps = {
+    title: string;
+    description: string;
+    date: Date;
+    categories: string[];
+};
+
+const blog: blogProps[] = [
+    {
+        title: "The final nail in the HTML5 document outline coffin.",
+        description:
+            "All the main web browsers have finally dropped visual support for the HTML5 document outline algorithm. Here’s why that’s good news.",
+        date: new Date("2025-12-29"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "Should pagination take you to a new page?.",
+        description:
+            "‘Pagination’ has comes from the word ‘page’, so yes, pagination should consist of pages. But the question is totally valid; worth digging into!",
+        date: new Date("2025-12-03"),
+        categories: ["accessiblity", "HTML", "design"],
+    },
+    {
+        title: "An accessible pagination pattern (or two).",
+        description:
+            "A couple of weeks ago I added pagination to my blog, and it was an interesting delve into the various designs and markup patterns that can be used.",
+        date: new Date("2025-11-13"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "The return of the heading group.",
+        description:
+            "I’ve written about why we probably shouldn’t use header elements for headings, but what should we use instead? The <code><hgroup></code> element is back!",
+        date: new Date("2025-11-13"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "A big thank you for an incredible leaving present.",
+        description:
+            "On finishing at Sage, my amazing colleagues gave me a gift that made something I’d long wanted but never quite entertained a reality. The perfect send-off.",
+        date: new Date("2025-11-13"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "Headers, headings, and titles.",
+        description:
+            "What we call things is important, often as it helps us communicate clearly with our team; there are three terms I regularly hear used interchangeably.",
+        date: new Date("2025-11-13"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "Page headings don’t belong in the header.",
+        description:
+            "I have a habit of thinking pretty deeply about semantics and structure, and have been considering the main page heading and where it should live.",
+        date: new Date("2025-11-13"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "A new MacBook for a new chapter.",
+        description:
+            "Returning to self-employment meant buying a new laptop; here’s how I weighed up the Air versus the Pro, size, power, price, ports, and colour!",
+        date: new Date("2025-11-13"),
+        categories: ["accessiblity", "HTML"],
+    },
+    {
+        title: "Focus on the people that make things happen.",
+        description:
+            "Accessibility buy-in from senior leadership can be tough; real change comes from the people who design and build.",
+        date: new Date("2025-09-13"),
+        categories: ["accessiblity"],
+    },
+    {
+        title: "Making sense of accessibility and the law.",
+        description:
+            "Accessibility isn’t just the right thing to do, it’s the law. Here’s how the law applies to digital products, in plain English.",
+        date: new Date("2025-07-13"),
+        categories: ["accessiblity"],
+    },
+];
+---
+
+<BaseLayout>
+    <h1>Blog</h1>
+    <p>
+        If you’re interested in accessibility, user experience design, and/or
+        frontend development, you’re in the right place.
+    </p>
+    <ol>
+        {
+            blog.map((post, index) => (
+                <li>
+                    <h2 class="heading">
+                        <a href="/">{post.title}</a>
+                    </h2>
+
+                    <p>
+                        Article posted on{" "}
+                        {post.date.toLocaleDateString("en-IN", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}{" "}
+                        in
+                        {post.categories.map((category) => (
+                            <Fragment>
+                                {category ===
+                                    post.categories[
+                                        post.categories.length - 1
+                                    ] && <Fragment set:html={"and&nbsp;"} />}
+                                <a
+                                    href={`/category/${category}`}
+                                    set:text={category}
+                                    aria-label={`Blog in ${category}`}
+                                />
+                                {category !==
+                                    post.categories[
+                                        post.categories.length - 1
+                                    ] &&
+                                    category !==
+                                        post.categories[
+                                            post.categories.length - 2
+                                        ] && <Fragment set:html={",&nbsp;"} />}
+                                {category ===
+                                    post.categories[
+                                        post.categories.length - 1
+                                    ] && <Fragment set:html={"."} />}
+                            </Fragment>
+                        ))}
+                    </p>
+                    <p>{post.description}</p>
+                </li>
+            ))
+        }
+    </ol>
+</BaseLayout>
+
+<style>
+    h1 {
+        font-size: 2em;
+    }
+    code {
+        background-color: white;
+    }
+    ol {
+        margin-block: 1em;
+        max-width: 30em;
+        padding-left: 0;
+    }
+    li > * {
+        max-width: 30em;
+    }
+    li > p {
+        margin-top: 0.65em;
+        color: var(--text-secondary);
+    }
+    a[href*="/category"] {
+        text-transform: capitalize;
+    }
+    .heading {
+        max-width: 30em;
+        font-size: 1.675em;
+        line-height: 1.2;
+        margin-top: 1em;
+        text-wrap: balance;
+        color: var(--text-brand-primary);
+    }
+    .heading:hover {
+        color: var(--text-brand-primary-hover);
+    }
+
+    @media (min-width: 43em) {
+        h1 {
+            font-size: 4.2em;
+        }
+        .heading {
+            font-size: 2.45em;
+            margin-top: 1.2em;
+        }
+    }
+</style>
+<!-- <p>
+{
+    years.map((year) => (
+        <Fragment>
+            {year === years[years.length - 1] && (
+                <Fragment set:html={"and&nbsp;"} />
+            )}
+            <a
+                set:text={year}
+                href={`/blog/${year}`}
+                aria-label={`Blog ${year}`}
+            />
+            {year === years[years.length - 1] && (
+                <Fragment set:html={"."} />
+            )}
+            {year !== years[years.length - 1] &&
+                year !== years[years.length - 2] && (
+                    <Fragment set:html={",&nbsp;"} />
+                )}
+        </Fragment>
+    ))
+}
+</p> -->

@@ -1,0 +1,40 @@
+---
+export type Props = {
+    href: string;
+    title: string;
+    description: string;
+};
+
+const { href, title, description } = Astro.props;
+---
+
+<li class="card">
+    <h3>
+        <a href={href}>{title}</a>
+    </h3>
+    {description}
+</li>
+
+<style>
+    .card {
+        max-width: 32em;
+        color: var(--text-secondary);
+        background-color: var(--bg-secondary);
+        border-radius: 12px;
+        padding: 1em;
+        flex: 1 1 calc((100% - 1em) / 2.5);
+        min-width: 0;
+    }
+
+    .card > h3 {
+        font-size: 1.25em;
+        margin-block-start: 0.25em;
+        margin-block-end: 0.5em;
+    }
+
+    @media (min-width: 43em) {
+        .card > h3 {
+            font-size: 1.6em;
+        }
+    }
+</style>

@@ -42,14 +42,14 @@ h4 {
     text-wrap: balance;
 }
 
-a:not([class]) {
+a {
     text-decoration-skip-ink: auto;
     color: var(--text-brand-primary);
     text-decoration-thickness: 0.065em;
-    text-underline-offset: 4px;
+    text-underline-offset: 3px;
 }
 
-a:not([class]):hover {
+a:hover {
     color: var(--text-brand-primary-hover);
 }
 
@@ -76,8 +76,7 @@ ol {
     list-style: none;
 }
 
-ul[role="navigation"],
-ol[role="navigation"] {
+nav > :is(ul, ol) {
     margin: 0;
     padding: 0;
 }
@@ -89,6 +88,13 @@ body {
     gap: calc(var(--spacing) * 6);
     max-width: 40em;
     margin-inline: auto;
+}
+
+h1 {
+    letter-spacing: -0.02em;
+}
+h2 {
+    letter-spacing: -0.01em;
 }
 
 @media (min-width: 43em) {

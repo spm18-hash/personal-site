@@ -1,0 +1,64 @@
+---
+import Card from "./Card.astro";
+import SectionHeader from "./SectionHeader.astro";
+
+import type { Props as CardProps } from "./Card.astro";
+
+const title = "How I can help";
+const description =
+    "<p>Whether you need help building accessibility into your team, support delivering a digital service, or a new website built from scratch, I can help.</p>";
+
+const offers: CardProps[] = [
+    {
+        href: "/services/strategy-and-guide",
+        title: "Strategy and guide",
+        description:
+            "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
+    },
+    {
+        href: "/services/website-development",
+        title: "Website development",
+        description:
+            "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
+    },
+    {
+        href: "/services/accessibility-reviews",
+        title: "Accessibility reviews",
+        description:
+            "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
+    },
+    {
+        href: "/services/accessibility-audit",
+        title: "Accessibility audit",
+        description:
+            "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
+    },
+];
+---
+
+<section>
+    <SectionHeader title={title} description={description} />
+    <ul class="help-card-container">
+        {offers.map((offer, i) => <Card {...offer} />)}
+    </ul>
+</section>
+
+<style>
+    section {
+        margin-top: calc(var(--spacing) * 12);
+    }
+
+    .help-card-container {
+        min-width: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        padding-left: 0;
+    }
+
+    @media (min-width: 43em) {
+        section {
+            margin-top: calc(var(--spacing) * 14);
+        }
+    }
+</style>
