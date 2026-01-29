@@ -3,10 +3,16 @@ import Hero from "../components/Hero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import WriteSection from "../components/WriteSection.astro";
 import HelpSection from "../components/HelpSection.astro";
+import katex from "katex";
+
+const formula = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
+    throwOnError: false,
+});
 ---
 
 <BaseLayout>
     <Hero />
     <HelpSection />
     <WriteSection />
+    <div set:html={formula} />
 </BaseLayout>

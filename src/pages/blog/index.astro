@@ -1,7 +1,6 @@
 ---
+import CategoryList from "../../components/CategoryList.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
-const years = [2023, 2022, 2021, 2020];
 
 type blogProps = {
     title: string;
@@ -92,49 +91,30 @@ const blog: blogProps[] = [
     </p>
     <ol>
         {
-            blog.map((post, index) => (
-                <li>
-                    <h2 class="heading">
-                        <a href="/">{post.title}</a>
-                    </h2>
+            blog.map((post, index) => {
+                const cats = post.categories;
+                const hasMany = cats.length > 1;
+                return (
+                    <li>
+                        <h2 class="heading">
+                            <a href="/">{post.title}</a>
+                        </h2>
 
-                    <p>
-                        Article posted on{" "}
-                        {post.date.toLocaleDateString("en-IN", {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                        })}{" "}
-                        in
-                        {post.categories.map((category) => (
-                            <Fragment>
-                                {category ===
-                                    post.categories[
-                                        post.categories.length - 1
-                                    ] && <Fragment set:html={"and&nbsp;"} />}
-                                <a
-                                    href={`/category/${category.toLowerCase()}/`}
-                                    set:text={category}
-                                    aria-label={`Blog in ${category}`}
-                                />
-                                {category !==
-                                    post.categories[
-                                        post.categories.length - 1
-                                    ] &&
-                                    category !==
-                                        post.categories[
-                                            post.categories.length - 2
-                                        ] && <Fragment set:html={",&nbsp;"} />}
-                                {category ===
-                                    post.categories[
-                                        post.categories.length - 1
-                                    ] && <Fragment set:html={"."} />}
-                            </Fragment>
-                        ))}
-                    </p>
-                    <p>{post.description}</p>
-                </li>
-            ))
+                        <p>
+                            Article posted on{" "}
+                            <time datetime={post.date.toISOString()}>
+                                {post.date.toLocaleDateString("en-IN", {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                })}
+                            </time>
+                            <CategoryList categories={cats} />
+                        </p>
+                        <p class="description">{post.description}</p>
+                    </li>
+                );
+            })
         }
     </ol>
 </BaseLayout>
@@ -148,29 +128,35 @@ const blog: blogProps[] = [
     }
     ol {
         margin-block: 1em;
-        max-width: 30em;
+        max-width: 32em;
         padding-left: 0;
     }
     li > * {
-        max-width: 30em;
+        max-width: 32em;
     }
-    li > p {
-        margin-top: 0.65em;
-        color: var(--text-secondary);
-    }
-    a[href*="/category"] {
-        text-transform: capitalize;
-    }
-    .heading {
-        max-width: 30em;
-        font-size: 1.675em;
-        line-height: 1.2;
+    h2 + p {
         margin-top: 1em;
+        color: var(--text-secondary);
+        font-size: 0.9em;
+    }
+
+    .heading {
+        max-width: 40em;
+        letter-spacing: -0.04em;
+        font-size: 1.75em;
+        line-height: 1.2;
+        margin-top: 1.5em;
         text-wrap: balance;
         color: var(--text-brand-primary);
     }
     .heading:hover {
         color: var(--text-brand-primary-hover);
+    }
+
+    .description {
+        color: var(--text-secondary);
+        font-size: 0.9em;
+        margin-top: 0.8em;
     }
 
     @media (min-width: 43em) {
@@ -181,28 +167,9 @@ const blog: blogProps[] = [
             font-size: 2.45em;
             margin-top: 1.2em;
         }
+
+        li > p {
+            font-size: inherit;
+        }
     }
 </style>
-<!-- <p>
-{
-    years.map((year) => (
-        <Fragment>
-            {year === years[years.length - 1] && (
-                <Fragment set:html={"and&nbsp;"} />
-            )}
-            <a
-                set:text={year}
-                href={`/blog/${year}`}
-                aria-label={`Blog ${year}`}
-            />
-            {year === years[years.length - 1] && (
-                <Fragment set:html={"."} />
-            )}
-            {year !== years[years.length - 1] &&
-                year !== years[years.length - 2] && (
-                    <Fragment set:html={",&nbsp;"} />
-                )}
-        </Fragment>
-    ))
-}
-</p> -->

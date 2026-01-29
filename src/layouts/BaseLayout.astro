@@ -16,7 +16,10 @@ import Footer from "../components/Footer.astro";
             name="description"
             content="Astro is a modern web framework for building fast, secure, and SEO-friendly websites."
         />
-        <Font cssVariable="--font-google" preload />
+        <Font
+            cssVariable="--font-geist-mono"
+            preload={[{ weight: 700, style: "normal" }]}
+        />
 
         <title>Astro</title>
     </head>

@@ -19,10 +19,12 @@
         --text-primary: #f7f7f7;
         --text-secondary: #cecfd2;
 
-        --text-brand-primary: hsl(353 100% 70%);
-        --text-brand-primary-hover: hsl(0 95% 75%);
+        --text-brand-primary: hsl(231 100% 75%);
+        --text-brand-primary-hover: hsl(231 100% 85%);
 
-        --bg-primary: #0c0e12;
+        --text-brand-selection: hsl(231 100% 70%);
+
+        --bg-primary: hsl(0 0% 10%);
 
         --bg-secondary: #13161b;
         --bg-secondary-solid: #61656c;

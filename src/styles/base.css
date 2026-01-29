@@ -1,9 +1,9 @@
 html {
-    font-size: 120%;
+    font-size: 115%;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    font-family: var(--font-google);
+    font-family: var(--font-geist-mono);
 }
 
 body {
@@ -97,6 +97,11 @@ h2 {
     letter-spacing: -0.01em;
 }
 
+::selection {
+    color: var(--text-primary);
+    background-color: var(--text-brand-selection);
+}
+
 @media (min-width: 43em) {
     html {
         font-size: 145%;
@@ -108,6 +113,6 @@ h2 {
 
 @media (min-width: 85em) {
     html {
-        font-size: 165%;
+        font-size: 160%;
     }
 }

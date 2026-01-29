@@ -1,0 +1,34 @@
+---
+type Props = {
+    categories: string[];
+};
+
+const { categories } = Astro.props;
+const len = categories.length;
+---
+
+{
+    categories.length > 0 && (
+        <span>
+            {"in "}
+            {categories.map((cat, i) => (
+                <>
+                    {i > 0 && (i === len - 1 ? " & " : ", ")}
+                    <a
+                        href={`/category/${cat.toLowerCase()}/`}
+                        aria-label={`Articles about ${cat}`}
+                    >
+                        {cat}
+                    </a>
+                </>
+            ))}
+            {"."}
+        </span>
+    )
+}
+
+<style>
+    a {
+        text-transform: capitalize;
+    }
+</style>
