@@ -1,13 +1,12 @@
 ---
 import "../styles/global.css";
-import { Font } from "astro:assets";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="en" class="dark antialiased">
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -16,16 +15,11 @@ import Footer from "../components/Footer.astro";
             name="description"
             content="Astro is a modern web framework for building fast, secure, and SEO-friendly websites."
         />
-        <Font
-            cssVariable="--font-geist-mono"
-            preload={[{ weight: 700, style: "normal" }]}
-        />
-
         <title>Astro</title>
     </head>
     <body>
         <Header />
-        <main class="flex-1">
+        <main>
             <slot />
         </main>
         <Footer />
