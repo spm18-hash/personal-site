@@ -1,86 +1,9 @@
 ---
-import CategoryList from "../../components/CategoryList.astro";
+import { getCollection } from "astro:content";
+import BlogCard from "../../components/BlogCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-type blogProps = {
-    title: string;
-    description: string;
-    date: Date;
-    categories: string[];
-};
-
-const blog: blogProps[] = [
-    {
-        title: "The final nail in the HTML5 document outline coffin.",
-        description:
-            "All the main web browsers have finally dropped visual support for the HTML5 document outline algorithm. Here’s why that’s good news.",
-        date: new Date("2025-12-29"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "Should pagination take you to a new page?.",
-        description:
-            "‘Pagination’ has comes from the word ‘page’, so yes, pagination should consist of pages. But the question is totally valid; worth digging into!",
-        date: new Date("2025-12-03"),
-        categories: ["accessiblity", "HTML", "design"],
-    },
-    {
-        title: "An accessible pagination pattern (or two).",
-        description:
-            "A couple of weeks ago I added pagination to my blog, and it was an interesting delve into the various designs and markup patterns that can be used.",
-        date: new Date("2025-11-13"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "The return of the heading group.",
-        description:
-            "I’ve written about why we probably shouldn’t use header elements for headings, but what should we use instead? The <code><hgroup></code> element is back!",
-        date: new Date("2025-11-13"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "A big thank you for an incredible leaving present.",
-        description:
-            "On finishing at Sage, my amazing colleagues gave me a gift that made something I’d long wanted but never quite entertained a reality. The perfect send-off.",
-        date: new Date("2025-11-13"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "Headers, headings, and titles.",
-        description:
-            "What we call things is important, often as it helps us communicate clearly with our team; there are three terms I regularly hear used interchangeably.",
-        date: new Date("2025-11-13"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "Page headings don’t belong in the header.",
-        description:
-            "I have a habit of thinking pretty deeply about semantics and structure, and have been considering the main page heading and where it should live.",
-        date: new Date("2025-11-13"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "A new MacBook for a new chapter.",
-        description:
-            "Returning to self-employment meant buying a new laptop; here’s how I weighed up the Air versus the Pro, size, power, price, ports, and colour!",
-        date: new Date("2025-11-13"),
-        categories: ["accessiblity", "HTML"],
-    },
-    {
-        title: "Focus on the people that make things happen.",
-        description:
-            "Accessibility buy-in from senior leadership can be tough; real change comes from the people who design and build.",
-        date: new Date("2025-09-13"),
-        categories: ["accessiblity"],
-    },
-    {
-        title: "Making sense of accessibility and the law.",
-        description:
-            "Accessibility isn’t just the right thing to do, it’s the law. Here’s how the law applies to digital products, in plain English.",
-        date: new Date("2025-07-13"),
-        categories: ["accessiblity"],
-    },
-];
+const posts = await getCollection("blog");
 ---
 
 <BaseLayout>
@@ -90,32 +13,7 @@ const blog: blogProps[] = [
         frontend development, you’re in the right place.
     </p>
     <ol>
-        {
-            blog.map((post, index) => {
-                const cats = post.categories;
-                const hasMany = cats.length > 1;
-                return (
-                    <li>
-                        <h2 class="heading">
-                            <a href="/">{post.title}</a>
-                        </h2>
-
-                        <p>
-                            Article posted on{" "}
-                            <time datetime={post.date.toISOString()}>
-                                {post.date.toLocaleDateString("en-IN", {
-                                    day: "numeric",
-                                    month: "long",
-                                    year: "numeric",
-                                })}
-                            </time>
-                            <CategoryList categories={cats} />
-                        </p>
-                        <p class="description">{post.description}</p>
-                    </li>
-                );
-            })
-        }
+        {posts.map(({ data }) => <BlogCard {...data} />)}
     </ol>
 </BaseLayout>
 
