@@ -21,18 +21,6 @@ const offers: CardProps[] = [
         description:
             "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
     },
-    {
-        href: "/services/accessibility-reviews",
-        title: "Accessibility reviews",
-        description:
-            "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
-    },
-    {
-        href: "/services/accessibility-audit",
-        title: "Accessibility audit",
-        description:
-            "Strategic support to shape the policies, programmes, and processes needed for long term, sustainable accessibility across your organisation.",
-    },
 ];
 ---
 
@@ -50,13 +38,15 @@ const offers: CardProps[] = [
 
     .help-card-container {
         min-width: 0;
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
         gap: 1em;
         padding-left: 0;
     }
 
     @media (min-width: 43em) {
+        .help-card-container {
+            grid-template-columns: repeat(2, auto);
+        }
         section {
             margin-top: calc(var(--spacing) * 14);
         }
