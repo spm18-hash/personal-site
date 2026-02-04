@@ -1,0 +1,77 @@
+---
+type Props = {
+    title: string;
+    date: Date;
+    categories: string[];
+    description: string;
+};
+import CategoryList from "./CategoryList.astro";
+const { title, date, categories, description } = Astro.props;
+---
+
+<li>
+    <h2 class="heading">
+        <a href="/">{title}</a>
+    </h2>
+
+    <p>
+        Article posted on{" "}
+        <time datetime={date.toISOString()}>
+            {
+                date.toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                })
+            }
+        </time>
+        <CategoryList categories={categories} />
+    </p>
+    <p class="description">{description}</p>
+</li>
+
+<style>
+    ol {
+        margin-block: 1em;
+        max-width: 32em;
+        padding-left: 0;
+    }
+    li > * {
+        max-width: 32em;
+    }
+    h2 + p {
+        margin-top: 1em;
+        color: var(--text-secondary);
+        font-size: 0.9em;
+    }
+
+    .heading {
+        max-width: 40em;
+        letter-spacing: -0.04em;
+        font-size: 1.75em;
+        line-height: 1.2;
+        margin-top: 1.5em;
+        text-wrap: balance;
+        color: var(--text-brand-primary);
+    }
+    .heading:hover {
+        color: var(--text-brand-primary-hover);
+    }
+
+    .description {
+        color: var(--text-secondary);
+        font-size: 0.9em;
+        margin-top: 0.8em;
+    }
+
+    @media (min-width: 43em) {
+        .heading {
+            font-size: 2.45em;
+            margin-top: 1.2em;
+        }
+
+        li > p {
+            font-size: inherit;
+        }
+    }
+</style>
