@@ -13,7 +13,11 @@ const posts = await getCollection("blog");
         frontend development, you’re in the right place.
     </p>
     <ol>
-        {posts.map(({ data }) => <BlogCard {...data} />)}
+        {
+            posts.map(({ id, data }) => (
+                <BlogCard {...data} href={`/blog/${id}`} />
+            ))
+        }
     </ol>
 </BaseLayout>
 

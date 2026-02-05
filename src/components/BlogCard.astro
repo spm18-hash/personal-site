@@ -1,20 +1,21 @@
 ---
 type Props = {
     title: string;
+    href: string;
     date: Date;
     categories: string[];
     description: string;
 };
 import CategoryList from "./CategoryList.astro";
-const { title, date, categories, description } = Astro.props;
+const { title, href, date, categories, description } = Astro.props;
 ---
 
 <li>
     <h2 class="heading">
-        <a href="/">{title}</a>
+        <a href={href}>{title}</a>
     </h2>
 
-    <p>
+    <p class="meta">
         Article posted on{" "}
         <time datetime={date.toISOString()}>
             {
@@ -39,17 +40,15 @@ const { title, date, categories, description } = Astro.props;
     li > * {
         max-width: 32em;
     }
-    h2 + p {
-        margin-top: 1em;
-        color: var(--text-secondary);
+    .meta {
+        margin-top: 0.8em;
         font-size: 0.9em;
     }
 
     .heading {
         max-width: 40em;
-        letter-spacing: -0.04em;
+        letter-spacing: -0.02em;
         font-size: 1.75em;
-        line-height: 1.2;
         margin-top: 1.5em;
         text-wrap: balance;
         color: var(--text-brand-primary);
@@ -59,9 +58,8 @@ const { title, date, categories, description } = Astro.props;
     }
 
     .description {
-        color: var(--text-secondary);
         font-size: 0.9em;
-        margin-top: 0.8em;
+        text-wrap: pretty;
     }
 
     @media (min-width: 43em) {
@@ -70,7 +68,7 @@ const { title, date, categories, description } = Astro.props;
             margin-top: 1.2em;
         }
 
-        li > p {
+        p {
             font-size: inherit;
         }
     }

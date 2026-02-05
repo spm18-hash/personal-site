@@ -1,0 +1,84 @@
+.prose {
+    kbd {
+        background-color: hsl(0 0 15);
+        border-radius: 3px;
+        border: 1px solid hsl(0 0 40);
+        box-shadow:
+            0 1px 1px hsl(0 0 0 / 0.2),
+            0 -01px 0 0 hsl(0 0 80 / 0.7) inset;
+        color: hsl(0 0 100);
+        display: inline-block;
+        width: fit-content;
+        font-size: 0.9em;
+        font-weight: bold;
+        line-height: 1;
+        padding: 4px 4px;
+        white-space: nowrap;
+    }
+
+    section {
+        margin-block: 2em 2.4em;
+    }
+
+    p {
+        max-width: 50ch;
+        line-height: 1.6;
+        @media (width >= 40em) {
+            font-size: 1.1em;
+        }
+    }
+
+    ol,
+    ul {
+        list-style: initial;
+        padding-inline-start: 1em;
+        @media (width >= 40em) {
+            padding-inline-start: 0;
+        }
+    }
+
+    li:not(:first-child) {
+        margin-block-start: 0.3em;
+    }
+
+    li::marker {
+        color: var(--text-brand-primary);
+    }
+
+    h2 {
+        margin-block-start: 1.5em;
+        font-size: 1.85em;
+        text-wrap: unset;
+        @media (width >= 40em) {
+            font-size: 2em;
+        }
+    }
+
+    h2 + p {
+        margin-block-start: 0.75em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        margin-block-start: 1.25em;
+    }
+
+    h3 + p {
+        margin-block-start: 0.75em;
+    }
+
+    blockquote {
+        border-left: 3px solid var(--text-brand-primary);
+        padding-left: 0.55em;
+        margin-left: 0;
+        margin-block: 1em;
+        padding-block: 0.5em;
+        p {
+            margin: 0;
+        }
+
+        @media (width>=40em) {
+            margin-left: -0.6em;
+        }
+    }
+}

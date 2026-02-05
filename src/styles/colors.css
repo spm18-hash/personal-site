@@ -1,16 +1,33 @@
 :root {
-    --text-primary: #f7f7f7;
-    --text-secondary: #cecfd2;
+    --text-primary: hsl(0 0 0);
+    --text-secondary: hsl(0 0 80%);
 
-    --text-brand-primary: hsl(20 90% 82%);
-    --text-brand-primary-hover: hsl(20 100% 88%);
+    --text-brand-primary: hsl(20 70% 45%);
+    --text-brand-primary-hover: hsl(20 75% 50%);
 
-    --text-brand-selection: hsl(20 90% 82%);
+    --text-brand-selection: hsl(20 70% 45%);
 
-    --bg-primary: hsl(0 0% 10%);
+    --bg-primary: hsl(0 0% 98%);
 
     --bg-secondary: hsl(20 10% 12%);
     --bg-secondary-solid: hsl(20 10% 12%);
 
     --spacing: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f7f7f7;
+        --text-secondary: #cecfd2;
+
+        --text-brand-primary: hsl(20 90% 76%);
+        --text-brand-primary-hover: hsl(20 90% 82%);
+
+        --text-brand-selection: hsl(20 90% 76%);
+
+        --bg-primary: hsl(0 0% 10%);
+
+        --bg-secondary: hsl(20 10% 12%);
+        --bg-secondary-solid: hsl(20 10% 12%);
+    }
 }
