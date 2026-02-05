@@ -38,7 +38,6 @@ const posts = await getCollection("blog");
     }
     h2 + p {
         margin-top: 1em;
-        color: var(--text-secondary);
         font-size: 0.9em;
     }
 
@@ -49,14 +48,13 @@ const posts = await getCollection("blog");
         line-height: 1.2;
         margin-top: 1.5em;
         text-wrap: balance;
-        color: var(--text-brand-primary);
+        color: var(--brand-primary);
     }
     .heading:hover {
-        color: var(--text-brand-primary-hover);
+        color: var(--brand-primary-hover);
     }
 
     .description {
-        color: var(--text-secondary);
         font-size: 0.9em;
         margin-top: 0.8em;
     }

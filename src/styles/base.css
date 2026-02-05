@@ -49,13 +49,13 @@ h4 {
 
 a {
     text-decoration-skip-ink: auto;
-    color: var(--text-brand-primary);
+    color: var(--brand-primary);
     text-decoration-thickness: 0.065em;
     text-underline-offset: 3px;
 }
 
 a:hover {
-    color: var(--text-brand-primary-hover);
+    color: var(--brand-primary-hover);
 }
 
 img,
